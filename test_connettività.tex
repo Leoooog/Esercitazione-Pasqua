@@ -1,0 +1,28 @@
+\section{Test di connettività}
+\hspace{24pt}Infine si effettuano dei test di connettività tra i dispositivi. Si testa la connettività tra una
+postazione dell'ospedale e il server Web prima tramite indirizzo IP e poi tramite il dominio "portaleinterno.it".
+Il comando utilizzato sarà \mintinline{batch}{ping <destinazione>}. Da PC2 si lanciano i seguenti comandi:
+\begin{itemize}
+	\item \begin{minted}{batch}
+	ping 192.168.0.3
+	\end{minted}
+	\item \begin{minted}{batch}
+	ping portaleinterno.it
+	\end{minted}
+\end{itemize}
+Il risultato è il seguente:
+\vspace{10pt}
+\begin{center}
+	\makebox[\textwidth]{\includegraphics[width=\paperwidth-80pt]{test_connettività1}}
+\end{center}
+\vspace{10pt}
+Si può osservare che anche nel secondo caso la destinazione è il server web, perché PC2 interroga prima il server DNS,
+e dopo aver ricevuto l'indirizzo IP corrispondente al dominio interroga il server web.\\
+\hspace{24pt}Si effettua un altro test per verificare la connettività degli ambulatori. In questo caso PC15 eseguirà
+gli stessi comandi lanciati prima da PC2. Ecco il risultato:
+\vspace{10pt}
+\begin{center}
+	\makebox[\textwidth]{\includegraphics[width=\paperwidth-80pt]{test_connettività2}}
+\end{center}
+\vspace{10pt}
+Anche in questo caso la connettività è verificata.

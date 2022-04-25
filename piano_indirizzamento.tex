@@ -1,0 +1,58 @@
+\section{Piano di indirizzamento e tabella di routing}
+\hspace{24pt}Si procede alla stesura del piano di indirizzamento.\\
+L'ospedale avrà come indirizzo di rete 192.168.0.0/24. L'interfaccia interna del router dell'ospedale (default gateway) avrà come indirizzo IP 192.168.0.1.
+A tutti gli host connessi alla rete interna dell'ospedale sarà assegnato un indirizzo IP in modalità dinamica, tramite un
+apposito server DHCP locato nella sala server (192.168.0.2), ad eccezione del server web e del server DNS, il cui indirizzamento
+sarà statico (rispettivamente 192.168.0.3 e 192.168.0.4).\\
+\hspace{24pt}I due ambulatori, che per comodità si chiamano 1 e 2, avranno gli indirizzi di rete 192.168.1.0/24 e 192.168.2.0/24 e
+l'indirizzamento sarà statico data la poca quantità di host appartenenti alla rete. Oltre all'indirizzo IP dell'host 
+bisognerà specificare anche il default gateway e il server DNS.\\
+\hspace{24pt}Il router dell'ospedale è collegato ai router dei due ambulatori tramite interfacce seriali, a cui sono stati assegnati
+indirizzi di classe A. Di seguito la tabella di indirizzamento dei router. \\
+\vspace*{12pt}
+\begin{center}
+    \begin{tabular}{| c | c | c |}
+        \hline
+        Router       & Interfaccia & Indirizzo IP \\ \hline
+        Ospedale     & FA0/0       & 192.168.0.1  \\  \hline
+        Ospedale     & SE0/0/0     & 20.0.0.1     \\ \hline
+        Ospedale     & SE0/0/1     & 10.0.0.1     \\ \hline
+        Ambulatorio1 & FA0/0       & 192.168.1.1  \\ \hline
+        Ambulatorio1 & SE0/0/0     & 10.0.0.2     \\ \hline
+        Ambulatorio2 & FA0/0       & 192.168.2.1  \\ \hline
+        Ambulatorio2 & SE0/0/0     & 20.0.0.2     \\ \hline
+    \end{tabular}
+\end{center}
+
+\vspace{12pt}
+Per far comunicare i due ambulatori con l'ospedale bisogna configurare le tabelle di routing dei router. Si assume che
+i due ambulatori non debbano comunicare tra di loro. Di seguito le tabelle per ogni router.\\
+\vspace{12pt}
+Ospedale:
+\begin{center}
+    \begin{tabular}{| c | c | c |}
+        \hline
+        Destinazione & Subnet Mask   & Next Hop \\ \hline
+        192.168.1.0  & 255.255.255.0 & 10.0.0.2 \\ \hline
+        192.168.2.0  & 255.255.255.0 & 20.0.0.2 \\ \hline
+    \end{tabular}
+\end{center}
+\vspace*{12pt}
+Ambulatorio1:
+\begin{center}
+    \begin{tabular}{| c | c | c |}
+        \hline
+        Destinazione & Subnet Mask   & Next Hop \\ \hline
+        192.168.0.0  & 255.255.255.0 & 10.0.0.1 \\ \hline
+    \end{tabular}
+\end{center}
+\vspace*{12pt}
+Ambulatorio2:
+\begin{center}
+    \begin{tabular}{| c | c | c |}
+        \hline
+        Destinazione & Subnet Mask   & Next Hop \\ \hline
+        192.168.0.0  & 255.255.255.0 & 10.0.0.2 \\ \hline
+    \end{tabular}
+\end{center}
+\vspace*{12pt}

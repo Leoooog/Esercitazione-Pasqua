@@ -1,0 +1,9 @@
+\section{Ipotesi VLAN}
+Qualora si voglia permettere l'accesso al router dell'ospedale soltanto alla farmacia bisogna affidarsi alla 
+tecnologia VLAN\footnote{Virtual Local Area Network: divisione logica di una rete in più sottoreti agendo sugli 
+switch. La topologia fisica della rete non cambia.}. Si andranno a creare delle nuove VLAN all'interno del VLAN 
+database degli switch dell'ospedale. \\
+\hspace{24pt}Per permettere l'accesso al router soltanto alla farmacia l'unica porta da mettere in modalità 
+Access (con soltanto l'id della VLAN della farmacia) è quella del centro stella di edificio collegata al router. 
+Tutti i restanti collegamenti saranno impostati su Trunk, in modo da permettere il passaggio di pacchetti provenienti 
+da tutte le VLAN.

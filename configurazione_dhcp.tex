@@ -1,0 +1,7 @@
+\section{Configurazione DHCP}
+\hspace{24pt}È richiesto che a tutti gli host dell'ospedale, esclusi i server, venga assegnato un indirizzo IP tramite 
+DHCP. Per fare ciò, bisogna abilitare il servizio DHCP nel server incaricato e impostare l'indirizzo statico del server 
+DHCP, l'indirizzo di default gateway, il server DNS, la subnet mask e l'intervallo degli indirizzi da assegnare agli 
+host. In questo caso l'indirizzo IP del server sarà 192.168.0.2, l'indirizzo di default gateway è 192.168.0.1, la 
+subnet mask è 255.255.255.0 e l'intervallo degli indirizzi da assegnare agli host è .5 $\rightarrow$ .254. L'indirizzo 
+di partenza è 192.168.0.5 e il numero massimo di host è 250, escludendo default gateway, broadcast e i server.
